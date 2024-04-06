@@ -1,6 +1,6 @@
 def fix_string_for_parse_input(expression):
     """
-    Функция для добавления пробелов из выражения для корректной обработки
+    Функция для добавления пробелов в выражение для корректного парсинга
     """
     expression_with_spaces = ""
     for char in expression:
