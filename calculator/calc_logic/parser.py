@@ -3,13 +3,16 @@ from .fix_string import fix_string_for_parse_input
 
 def parse_input(expression):
     """
-    функция, для парсинга выражения и перевода в постфиксную нотацию
+    Функция для парсинга выражения и перевода в постфиксную нотацию
     """
     elements = fix_string_for_parse_input(expression).split()
 
     operator_stack = []
     postfix_notation = []
-    operator_priority = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3, 'sqrt': 4, 'sin': 4, 'cos': 4, 'tan': 4}
+    operator_priority = {'+': 1, '-': 1,
+                         '*': 2, '/': 2,
+                         '^': 3,
+                         'sqrt': 4, 'sin': 4, 'cos': 4, 'tan': 4, 'tg': 4, 'log': 4, 'lg': 4}
 
     for element in elements:
         if element.isdigit():
