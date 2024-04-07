@@ -1,7 +1,5 @@
 import math
-
-operators = {"+": 'add', "-": 'subtract', '*': 'multiply', '/': 'divide', '^': 'power'}
-functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg']
+from calculator.math_functions.math_funcs import functions
 
 
 def evaluate_postfix(expression):
@@ -15,10 +13,14 @@ def evaluate_postfix(expression):
         'sqrt': lambda x: x ** 0.5,
         'log': lambda x: math.log(x, 2),
         'lg': lambda x: math.log(x, 10),
+        'ln': lambda x: math.log(x, math.e),
         'sin': lambda x: math.sin(x),
         'cos': lambda x: math.cos(x),
         'tan': lambda x: math.tan(x),
-        'tg': lambda x: math.tan(x)
+        'tg': lambda x: math.tan(x),
+        'mod': lambda x, y: x % y,
+        '%': lambda x, y: x % y,
+        '!': lambda x: math.factorial(x)
     }
 
     for element in map(str, expression):

@@ -12,6 +12,7 @@ def start():
             break
         if check_for_command(user_input):
             start()
+            break
 
         try:
             expression = parse_input(user_input)

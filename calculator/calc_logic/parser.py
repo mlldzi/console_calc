@@ -11,8 +11,8 @@ def parse_input(expression):
     postfix_notation = []
     operator_priority = {'+': 1, '-': 1,
                          '*': 2, '/': 2,
-                         '^': 3,
-                         'sqrt': 4, 'sin': 4, 'cos': 4, 'tan': 4, 'tg': 4, 'log': 4, 'lg': 4}
+                         '^': 3, 'mod': 3, '%': 3, '!': 3,
+                         'sqrt': 4, 'sin': 4, 'cos': 4, 'tan': 4, 'tg': 4, 'log': 4, 'lg': 4, 'ln': 4}
 
     for element in elements:
         if element.isdigit():
