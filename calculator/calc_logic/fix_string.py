@@ -12,7 +12,11 @@ def fix_string_for_parse_input(expression):
         else:
             expression_with_spaces += " " + char + " "
 
-    expression_with_spaces = expression_with_spaces.strip()
     expression_with_spaces = re.sub(r"\s+", " ", expression_with_spaces)
 
-    return expression_with_spaces
+    result = ""
+    for element in expression_with_spaces.split():
+        result = result + ' ' + str(element).lower()
+
+    result = result.strip()
+    return result

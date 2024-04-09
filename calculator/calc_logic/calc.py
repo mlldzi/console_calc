@@ -1,24 +1,26 @@
-from .parser import parse_input
+from .parser import Parser
 from .postfix import evaluate_postfix
 from .exceptions import check_for_command, check_for_exit
 from calculator.some_functions.work_with_history import logging_history
 
 
-def start():
-    while True:
-        user_input = input("Введите выражение: ")
+class Calculator:
 
-        if check_for_exit(user_input):
-            break
-        if check_for_command(user_input):
-            start()
-            break
+    def start(self):
+        while True:
+            user_input = input("Введите выражение: ")
 
-        try:
-            expression = parse_input(user_input)
-            result = evaluate_postfix(expression)
-            logging_history(user_input, result)
-            print(result)
+            if check_for_exit(user_input):
+                break
+            if check_for_command(user_input):
+                self.start()
+                break
 
-        except ValueError as er:
-            print(er)
+            try:
+                expression = Parser(user_input).parse_input()
+                result = evaluate_postfix(expression)
+                logging_history(user_input, result)
+                print(result)
+
+            except ValueError as error:
+                print(error)

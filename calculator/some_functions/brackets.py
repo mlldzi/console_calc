@@ -19,5 +19,4 @@ def brackets_fix(expression):
 
         elif i == '!':
             expression = expression.replace(f" {i}", f"{i}")
-
     return expression

@@ -12,7 +12,12 @@ def logging_history(expression, result):
         file.write(f"{datetime.now().replace(microsecond=0)}: {expression} = {result}\n")
 
 
-def read_history():
+def read_history(length=9):
     path = r"database\history.txt"
     with open(path, "r") as file:
-        return file.read()
+        lines = file.readlines()
+        if length > len(lines):
+            length = len(lines)
+        lines = lines[-length:]
+        lines[length - 1] = lines[length - 1].strip()
+        return "".join(lines)

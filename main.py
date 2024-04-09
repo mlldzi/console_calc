@@ -1,11 +1,13 @@
 from sys import path
 
 path.append(r"..\\calculator")
-from calculator.calc_logic.calc import start
+from calculator.calc_logic.calc import Calculator
 
 
 def main():
-    start()
+    calc = Calculator()
+    calc.start()
+
 
 
 if __name__ == "__main__":

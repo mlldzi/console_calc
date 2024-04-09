@@ -1,19 +1,71 @@
-info = {
-    'add': 'Сложение',
-    'subtract': 'Вычитание',
-    'multiply': 'Умножение',
-    'divide': 'Деление',
-    'power': 'Возведение числа в степень',
-    'log': 'Логарифм по основанию 2',
-    'ln': 'Логарифм по основанию e',
-    'lg': 'Десятичный логарифм',
-    'sqrt': 'Квадратный корень числа',
-    'sin': 'Функция для вычисления синуса угла в радианах',
-    'cos': 'Функция для вычисления косинуса угла в радианах',
-    'tan': 'Функция для вычисления тангенса угла в радианах',
-    'tg': 'Функция для вычисления тангенса угла в радианах',
-    'mod или %': 'Остаток от деления',
-    '!': 'Факториал'
-}
-operators = {"+": 'add', "-": 'subtract', '*': 'multiply', '/': 'divide', '^': 'power', 'mod или %': 'mod или %'}
-functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!']
+from .basic import *
+from .trigonometry import *
+from calculator.some_functions.parent_classes import OneArg, MultiArgs
+
+
+class Factorial(OneArg):
+    """
+    Факториал
+    """
+
+    def calculate(self):
+        return math.factorial(self.a)
+
+
+class Log(OneArg):
+    """
+    Логарифм по основанию 2
+    """
+
+    def calculate(self):
+        return math.log2(self.a)
+
+
+class Lg(OneArg):
+    """
+    Десятичный логарифм
+    """
+
+    def calculate(self):
+        return math.log10(self.a)
+
+
+class Ln(OneArg):
+    """
+    Логарифм по основанию e
+    """
+
+    def calculate(self):
+        return math.log(self.a, math.e)
+
+
+class Sqrt(OneArg):
+    """
+    Квадратный корень числа
+    """
+
+    def calculate(self):
+        return math.sqrt(self.a)
+
+
+class Gcd(MultiArgs):
+    """
+    Наибольший общий делитель
+    """
+
+    def calculate(self):
+        return math.gcd(*self.args)
+
+
+class Lcm(MultiArgs):
+    """
+    Наименьший общий делитель
+    """
+
+    def calculate(self):
+        return math.lcm(*self.args)
+
+
+operators = {Add: '+', Subtract: '-', Multiply: '*', Divide: '/', Power: '^', Mod: 'mod или %', Log: 'log', Lg: 'lg',
+             Ln: 'ln', Sqrt: 'sqrt', Sin: 'sin', Cos: 'cos', Tan: 'tan или tg', Factorial: '!', Gcd: 'gcd', Lcm: 'lcm'}
+functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!', 'gcd', 'lcm']

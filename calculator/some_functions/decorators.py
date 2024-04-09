@@ -1,11 +1,14 @@
 from functools import wraps
 
 
-def decorator_sub(func):
-    @wraps(func)
-    def wrapper():
-        print('*' * 52)
-        func()
-        print('*' * 52)
+def decorator_sub(symbol='-'):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            print(symbol * 52)
+            func(*args, **kwargs)
+            print(symbol * 52)
 
-    return wrapper
+        return wrapper
+
+    return decorator
