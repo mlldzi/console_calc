@@ -8,7 +8,7 @@ class Sin(OneArg):
     """
 
     def calculate(self):
-        return math.sin(self.a)
+        return round(math.sin(self.a), 15)
 
 
 class Cos(OneArg):
@@ -17,7 +17,7 @@ class Cos(OneArg):
     """
 
     def calculate(self):
-        return math.cos(self.a)
+        return round(math.cos(self.a), 15)
 
 
 class Tan(OneArg):
@@ -26,7 +26,7 @@ class Tan(OneArg):
     """
 
     def calculate(self):
-        return math.tan(self.a)
+        return Cos(self.a).calculate() / Sin(self.a).calculate()
 
 
 class Tg(Tan):

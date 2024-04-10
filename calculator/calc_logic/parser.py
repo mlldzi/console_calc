@@ -1,5 +1,8 @@
 from .fix_string import fix_string_for_parse_input
 from calculator.math_functions.math_funcs import Gcd, Lcm
+from calculator.some_functions.regulars import is_number
+from calculator.some_functions.work_with_num import push_to_stack, check_for_e, check_for_pi
+import math
 
 
 class Parser:
@@ -28,20 +31,21 @@ class Parser:
                     continue
                 self.nums_for_spec_functions.append(element)
                 if element == ")":
-                    self.nums_for_spec_functions = map(int, self.nums_for_spec_functions[2:-1])
-                    spec_func = self.special_functions[self.spec_func]
-                    self.postfix_notation.append(spec_func(*self.nums_for_spec_functions))
-                    self.spec_func = None
-                    self.nums_for_spec_functions = []
+                    self.spec_func_evaluate()
 
-            elif element.isdigit() or (element[0] == '-' and element[1:].isdigit()):
-                self.postfix_notation.append(int(element))
+            elif is_number(element):
+                push_to_stack(element, self.postfix_notation)
 
             elif element in self.operator_priority:
                 while self.operator_stack and self.operator_stack[-1] != '(' and self.operator_priority.get(
                         self.operator_stack[-1], 0) >= self.operator_priority[element]:
                     self.postfix_notation.append(self.operator_stack.pop())
                 self.operator_stack.append(element)
+
+            elif element in ['pi', 'p', '-pi', '-p']:
+                check_for_pi(element, self.postfix_notation)
+            elif element in ['e', '-e']:
+                check_for_e(element, self.postfix_notation)
 
             elif element == '(':
                 self.operator_stack.append(element)
@@ -61,3 +65,13 @@ class Parser:
                 raise ValueError("Неправильное расположение скобок в выражении")
             self.postfix_notation.append(self.operator_stack.pop())
         return self.postfix_notation
+
+    def spec_func_evaluate(self):
+        nums = []
+        for elem in self.nums_for_spec_functions[2:-1]:
+            push_to_stack(elem, nums)
+        self.nums_for_spec_functions = nums
+        spec_func = self.special_functions[self.spec_func]
+        self.postfix_notation.append(spec_func(*self.nums_for_spec_functions))
+        self.spec_func = None
+        self.nums_for_spec_functions = []
