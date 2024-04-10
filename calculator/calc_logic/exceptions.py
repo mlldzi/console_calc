@@ -37,6 +37,6 @@ def check_for_command(user_input):
 
 
 def check_for_exit(user_input):
-    phrases = ["goodbye", "exit", "quit", "выход", "стоп", "stop"]
+    phrases = ["goodbye", "exit", "quit", "выход", "стоп", "stop", "bye"]
     if user_input.lower() in phrases:
         return True

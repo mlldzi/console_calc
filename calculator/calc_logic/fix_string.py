@@ -9,9 +9,10 @@ def fix_string_for_parse_input(expression):
     for char in expression:
         if char.isdigit() or char.isalpha():
             expression_with_spaces += char
+        elif char == '-' and (not expression_with_spaces or expression_with_spaces[-1] in [' ', '(']):
+            expression_with_spaces += char
         else:
             expression_with_spaces += " " + char + " "
-
     expression_with_spaces = re.sub(r"\s+", " ", expression_with_spaces)
 
     result = ""

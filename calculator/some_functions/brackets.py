@@ -12,6 +12,8 @@ def brackets_fix(expression):
 
     if " )" in expression:
         expression = expression.replace(" )", ")")
+    if ' ,' in expression:
+        expression = expression.replace(" ,", ",")
 
     for i in functions:
         if i in expression and i != '!':

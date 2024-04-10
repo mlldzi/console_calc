@@ -15,7 +15,7 @@ class Parser:
                                   'gcd': 5, 'lcm': 5}
 
         self.special_functions = {'gcd': Gcd, 'нод': Gcd, 'lcm': Lcm, 'нок': Lcm}
-        self.nums = []
+        self.nums_for_spec_functions = []
         self.spec_func = None
 
     def parse_input(self):
@@ -26,15 +26,15 @@ class Parser:
                     self.spec_func = element
                 if element == ',':
                     continue
-                self.nums.append(element)
+                self.nums_for_spec_functions.append(element)
                 if element == ")":
-                    self.nums = map(int, self.nums[2:-1])
+                    self.nums_for_spec_functions = map(int, self.nums_for_spec_functions[2:-1])
                     spec_func = self.special_functions[self.spec_func]
-                    self.postfix_notation.append(spec_func(*self.nums))
+                    self.postfix_notation.append(spec_func(*self.nums_for_spec_functions))
                     self.spec_func = None
-                    self.nums = []
+                    self.nums_for_spec_functions = []
 
-            elif element.isdigit():
+            elif element.isdigit() or (element[0] == '-' and element[1:].isdigit()):
                 self.postfix_notation.append(int(element))
 
             elif element in self.operator_priority:
@@ -52,6 +52,7 @@ class Parser:
                     self.operator_stack.pop()
                 else:
                     raise ValueError("Неправильное расположение скобок")
+
             else:
                 raise ValueError("Некорректный символ")
 

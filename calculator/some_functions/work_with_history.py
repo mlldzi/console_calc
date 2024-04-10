@@ -8,13 +8,13 @@ def logging_history(expression, result):
     expression = brackets_fix(expression)
 
     path = r"database\history.txt"
-    with open(path, "a") as file:
+    with open(path, "a", encoding='windows-1251') as file:
         file.write(f"{datetime.now().replace(microsecond=0)}: {expression} = {result}\n")
 
 
 def read_history(length=9):
     path = r"database\history.txt"
-    with open(path, "r") as file:
+    with open(path, "r", encoding='windows-1251') as file:
         lines = file.readlines()
         if length > len(lines):
             length = len(lines)

@@ -9,7 +9,5 @@ def main():
     calc.start()
 
 
-
 if __name__ == "__main__":
     main()
-

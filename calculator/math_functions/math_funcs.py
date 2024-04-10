@@ -68,4 +68,4 @@ class Lcm(MultiArgs):
 
 operators = {Add: '+', Subtract: '-', Multiply: '*', Divide: '/', Power: '^', Mod: 'mod или %', Log: 'log', Lg: 'lg',
              Ln: 'ln', Sqrt: 'sqrt', Sin: 'sin', Cos: 'cos', Tan: 'tan или tg', Factorial: '!', Gcd: 'gcd', Lcm: 'lcm'}
-functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!', 'gcd', 'lcm']
+functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!', 'gcd', 'lcm', 'нод', 'нок']

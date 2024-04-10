@@ -26,7 +26,7 @@ def evaluate_postfix(expression):
     }
 
     for element in map(str, expression):
-        if element.isdigit():
+        if element.isdigit() or (element[0] == '-' and element[1:].isdigit()):
             stack.append(int(element))
         else:
             if element in operations:
