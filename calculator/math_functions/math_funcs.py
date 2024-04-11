@@ -23,11 +23,11 @@ class Exp(OneArg):
 
 class Log(OneArg):
     """
-    Логарифм по основанию 2
+    Логарифм по произвольному основанию
     """
 
     def calculate(self):
-        return math.log2(self.a)
+        return math.log(self.a, 2)
 
 
 class Lg(OneArg):

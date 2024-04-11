@@ -3,15 +3,17 @@ import math
 
 def push_to_stack(element, stack):
     """
-    Функция для добавления в массив(стек), пришлось так сделать,
-    потому что пайтон не может обработать такого рода числа int("2.3")
-    Поэтому, если ошибка на int("2.3"), то число однозначно флоат
+    Функция для добавления в массив(стек)
     """
+    stack.append(to_num(element))
+
+
+def to_num(element):
     try:
-        stack.append(int(element))
+        return int(element)
     except:
         try:
-            stack.append(float(element))
+            return float(element)
         except:
             pass
 
@@ -51,7 +53,24 @@ def evaluate_exp(num_for_exp, postfix_notation):
     """
     Функция для обработки экспоненты
     """
-    num_for_exp = int(num_for_exp[2])
+    num_for_exp = to_num(num_for_exp[2])
     postfix_notation.append(math.exp(num_for_exp))
     num_for_exp = []
     return num_for_exp
+
+
+def evaluate_log(nums_for_log, postfix_notation):
+    """
+    Функция для обработки логарифма, по умолчанию 2
+    """
+    if len(nums_for_log) == 5:
+        num = to_num(nums_for_log[2])
+        base = to_num(nums_for_log[3])
+        result = math.log(num, base)
+    else:
+        num = to_num(nums_for_log[2])
+        result = math.log(num, 2)
+
+    postfix_notation.append(result)
+    nums_for_log = []
+    return nums_for_log
