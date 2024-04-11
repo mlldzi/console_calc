@@ -33,7 +33,10 @@ class Divide(TwoArgs):
     """
 
     def calculate(self):
-        return self.a / self.b
+        try:
+            return self.a / self.b
+        except ZeroDivisionError:
+            return "На ноль делить нельзя"
 
 
 class Power(TwoArgs):

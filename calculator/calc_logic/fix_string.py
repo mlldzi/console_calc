@@ -19,9 +19,11 @@ def fix_string_for_parse_input(expression):
                 expression_with_spaces += " "
             expression_with_spaces += " " + char + " "
             is_prev_char_digit = False
+
     expression_with_spaces = remove_spaces(expression_with_spaces)
+
     result = ""
-    for element in expression_with_spaces.split():
+    for element in expression_with_spaces.split():  # для перевода всех функций в нижний регистр
         result = result + ' ' + str(element).lower()
 
     result = result.strip()

@@ -12,6 +12,15 @@ class Factorial(OneArg):
         return math.factorial(self.a)
 
 
+class Exp(OneArg):
+    """
+    Экспонента
+    """
+
+    def calculate(self):
+        return math.exp(self.a)
+
+
 class Log(OneArg):
     """
     Логарифм по основанию 2
@@ -59,7 +68,7 @@ class Gcd(MultiArgs):
 
 class Lcm(MultiArgs):
     """
-    Наименьший общий делитель
+    Наименьшее общее кратное
     """
 
     def calculate(self):
@@ -67,5 +76,6 @@ class Lcm(MultiArgs):
 
 
 operators = {Add: '+', Subtract: '-', Multiply: '*', Divide: '/', Power: '^', Mod: 'mod или %', Log: 'log', Lg: 'lg',
-             Ln: 'ln', Sqrt: 'sqrt', Sin: 'sin', Cos: 'cos', Tan: 'tan или tg', Factorial: '!', Gcd: 'gcd', Lcm: 'lcm'}
-functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!', 'gcd', 'lcm', 'нод', 'нок']
+             Ln: 'ln', Sqrt: 'sqrt', Sin: 'sin', Cos: 'cos', Tan: 'tan или tg', Factorial: '!', Gcd: 'gcd', Lcm: 'lcm',
+             Exp: 'exp'}
+functions = ['sqrt', 'sin', 'cos', 'tan', 'tg', 'log', 'lg', 'ln', '!', 'gcd', 'lcm', 'нод', 'нок', 'exp']
