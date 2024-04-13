@@ -27,7 +27,7 @@ class Log(OneArg):
     """
 
     def calculate(self):
-        return math.log(self.a)
+        return math.log(self.a, 2)
 
 
 class Lg(OneArg):
